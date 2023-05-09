@@ -5,6 +5,7 @@ Sistema operacional Linux Mint 21.1.
 DIA 9/05/2022.
 Todas as funções estão no arquivo conversões.c e no cabeçalho
 conversões.h.
+link do repositório: https://github.com/morais1244/conv-de-sist-de-numeracao.
 */ 
 
 #include <stdio.h>
