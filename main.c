@@ -6,7 +6,7 @@
 int main(){
     int i, d;
     int bin, dec, oct;
-    printf("Escolha sua entrada do sistema número entre: \n1.Binário\n2.Decimal\n3.Octal\n4.Hexadecimal\n");
+    printf("Escolha sua entrada do sistema númerico entre: \n1.Binário\n2.Decimal\n3.Octal\n4.Hexadecimal\n");
     printf("Digite o número do sistema: ");
     scanf("%d", &i);
     printf("Digite o número para qual sistema númerico você quer trasnferir: ");
