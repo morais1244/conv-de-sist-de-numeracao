@@ -18,33 +18,37 @@ int main(){
             printf("Digite um número em binário: ");
             scanf("%d",&bin);
             dec = bin_to_dec(bin);
-            printf("O número em decimal é: %d",dec);
+            printf("O número em decimal é: %d.",dec);
+            printf("\n");
         }
         else if (i==1 && d == 3){
             printf("Digite um número em binário: ");
             scanf("%d",&bin);
             dec = bin_to_dec(bin);
             oct = dec_to_oct(dec);
-            printf("O número em octal é: %d",oct);
+            printf("O número em octal é: %d.",oct);
+            printf("\n");
         }
         else if(i==1 && d == 4){
             bin_to_hex();
         }
+        
         else if(i==2 && d == 1){
             printf("Digite um número em decimal: ");
             scanf("%d",&dec);
             bin = dec_to_bin(dec);
-            printf("O número em binário é: %d",bin);
-
+            printf("O número em binário é: %d.",bin);
+            printf("\n");
         }
         else if(i==2 && d == 3){
             printf("Digite um número em decimal: ");
             scanf("%d",&dec);
-            dec_to_oct(dec);
-            printf("O número em octal é: %d",dec);
+            oct = dec_to_oct(dec);
+            printf("O número em octal é: %d",oct);
+            printf("\n");
         }
         else if(i==2 && d == 4){
-
+            dec_to_hex();
 
         }
         else if(i==3 && d == 1){
@@ -52,22 +56,22 @@ int main(){
 
         }
         else if(i==3 && d == 2){
-            
+            oct_to_dec();
 
         }
         else if(i==3 && d == 4){
-
+            oct_to_hex();
 
         }
         else if(i==4 && d == 1){
             hex_to_bin();
         }
         else if(i==4 && d == 2){
-
+            hex_to_dec();
 
         }
         else if(i==4 && d == 3){
-
+            hex_to_oct();
 
         }
     }

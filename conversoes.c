@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
+#include <stdlib.h>
 
 ///////////////////////////////////////////////////////////////////
 
@@ -47,7 +48,7 @@ int hex_to_bin() {
     char hex[20] , bin[65] = "";
     int i, len;
 
-    printf("Digite um número hexadecimal: ");
+    printf("Digite um número em hexadecimal: ");
     scanf("%s", hex);
 
     len = strlen(hex);
@@ -110,7 +111,7 @@ int hex_to_bin() {
         }
     }
 
-    printf("O número binário é: %s\n", bin);
+    printf("O número em binário é: %s.\n", bin);
 
     return 0;
 }
@@ -118,38 +119,22 @@ int hex_to_bin() {
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 int bin_to_hex(){
-    char bin[65], hex[20] = "";
-    int i, len, group, dec;
+    int dec = 0, i = 0, digito, bin;
+    printf("Digite um número em binário: ");
+    scanf("%d",&bin);
 
-    printf("Digite um número binário: ");
-    scanf("%s", bin);
-
-    len = strlen(bin);
-
-    if(len % 4 != 0) {
-        group = len / 4 + 1;
-        for(i = 0; i < group * 4 - len; i++) {
-            strcat(hex, "0");
-        }
-        strcat(hex, bin);
+    while (bin!= 0) {
+        digito = bin % 10;
+        dec += digito * pow(2, i);
+        ++i;
+        bin /= 10;
     }
-    else {
-        strcpy(hex, bin);
-    }
+    
+    char hex[20];
 
-    len = strlen(hex);
+    sprintf(hex, "%X", dec);
 
-    for(i = 0; i < len; i += 4) {
-        dec = (hex[i] - '0') * 8 + (hex[i+1] - '0') * 4 + (hex[i+2] - '0') * 2 + (hex[i+3] - '0');
-        if(dec < 10) {
-            sprintf(hex + strlen(hex), "%d", dec);
-        }
-        else {
-            sprintf(hex + strlen(hex), "%c", dec - 10 + 'A');
-        }
-    }
-
-    printf("O número hexadecimal é: %s\n", hex);
+    printf("O número em hexadecimal é: %s.\n",hex);
 
     return 0;
 }
@@ -157,26 +142,150 @@ int bin_to_hex(){
 /////////////////////////////////////////////////////////////////////////////
 
 int oct_to_bin() {
-    int oct, dec = 0, bin= 0, base = 1;
+    char oct[20] , bin[65] = "";
+    int i, len;
 
+    printf("Digite um número em octal: ");
+    scanf("%s", oct);
+
+    len = strlen(oct);
+
+    for(i = 0; i < len; i++) {
+        switch(oct[i]) {
+            case '0':
+                strcat(bin, "000");
+                break;
+            case '1':
+                strcat(bin, "001");
+                break;
+            case '2':
+                strcat(bin, "010");
+                break;
+            case '3':
+                strcat(bin, "011");
+                break;
+            case '4':
+                strcat(bin, "100");
+                break;
+            case '5':
+                strcat(bin, "101");
+                break;
+            case '6':
+                strcat(bin, "110");
+                break;
+            case '7':
+                strcat(bin, "111");
+                break;
+            default:
+                printf("Número octal inválido.\n");
+                return 0;
+        }
+    }
+
+    printf("O número em binário é: %s.\n", bin);
+
+    return 0;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+int dec_to_hex(){
+    int dec ;
+    printf("Digite um número em decimal: ");
+    scanf("%d", &dec);
+
+    
+    char hex[20];
+
+    sprintf(hex, "%X", dec);
+
+    printf("O número em hexadecimal é: %s.\n",hex);
+
+    return 0;
+}
+
+////////////////////////////////////////////////////////////////////////////////////
+
+int oct_to_dec(){
+    int dec, oct,i;
     printf("Digite um número octal: ");
     scanf("%d", &oct);
+    dec = 0;
+    i = 0;
 
-    // Convertendo octal para decimal
     while (oct != 0) {
-        dec += (oct % 10) * base;
+        dec += (oct % 10) * pow(8, i);
+        ++i;
         oct /= 10;
-        base *= 8;
     }
 
-    // Convertendo decimal para binário
+    printf("O número em decimal é: %d.\n", dec);
+
+    return 0;
+}
+
+////////////////////////////////////////////////////////////////////////
+
+int oct_to_hex(){
+    int oct,i=0,dec=0;
+    printf("Digite um número em octal: ");
+    scanf("%d", &oct);
+    char hex[20];
+
+    while (oct != 0) {
+        dec += (oct % 10) * pow(8, i);
+        ++i;
+        oct /= 10;
+    }
+
+    sprintf(hex, "%X", dec);
+
+    printf("O número em hexadecimal é: %s.\n",hex);
+
+    return 0;
+}
+
+///////////////////////////////////////////////////////////////
+
+int hex_to_dec(){
+    char hex[100];
+    long dec;
+    char* end_ptr;
+
+    printf("Digite um número em hexadecimal: ");
+    scanf("%s", hex);
+
+    dec = strtol(hex, &end_ptr, 16);
+
+    if (end_ptr == hex) {
+        printf("Erro na conversão.\n");
+    } else {
+        printf("O número em decimal é: %ld.\n",dec);
+    }
+
+    return 0;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+int hex_to_oct(){
+    char hex[100];
+    long dec;
+    char* end_ptr;
+
+    printf("Digite um número em hexadecimal: ");
+    scanf("%s", hex);
+
+    dec = strtol(hex, &end_ptr, 16);
+
+    int potencia = 1, oct = 0, digito;
     while (dec != 0) {
-        bin += (dec% 2) * base;
-        dec /= 2;
-        base *= 10;
+        digito = dec % 8;
+        oct += digito * potencia;
+        potencia *= 10;
+        dec /= 8;
     }
-
-    printf("O número em binário é: %d\n", bin);
+    printf("O número em octal é: %d.\n",oct);    
 
     return 0;
 }

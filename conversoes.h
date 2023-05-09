@@ -4,3 +4,8 @@ int dec_to_bin(int dec);
 int hex_to_bin();
 int bin_to_hex();
 int oct_to_bin();
+int dec_to_hex();
+int oct_to_dec();
+int oct_to_hex();
+int hex_to_dec();
+int hex_to_oct();
