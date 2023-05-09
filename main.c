@@ -1,3 +1,12 @@
+/*Trabalho 1 Fundamentos da Computação.
+Aluno: Guilherme Morais Araujo.
+Compilado pelo replit para facilitar.
+Sistema operacional Linux Mint 21.1.
+DIA 9/05/2022.
+Todas as funções estão no arquivo conversões.c e no cabeçalho
+conversões.h.
+*/ 
+
 #include <stdio.h>
 #include "conversoes.h"
 #include <math.h>
